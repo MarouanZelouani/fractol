@@ -23,8 +23,21 @@ typedef struct  s_complex
 	double imag;
 } t_complex;
 
+typedef struct s_plan
+{
+	double plan_width;
+	double plan_start;
+}t_plan;
+
 typedef struct s_param
 {
 	void *win;
 	void *mlx;
+	t_plan plan;
 } t_param;
+
+typedef struct s_moves
+{
+	double x_move;
+	double y_move;
+}t_moves;
