@@ -5,12 +5,11 @@
 #include <math.h>
 #include <X11/keysym.h>
 
-#define WIDTH 1400
-#define HEIGHT 900
-#define PLANEWIDTH 4.0
-#define PLANESTART (double)PLANEWIDTH / 2
-#define MAX_ITERATIONS 50
+#define WIDTH 1000
+#define HEIGHT 1000
 
+#define PLANEWIDTH 5.0
+#define MAX_ITERATIONS 50
 
 typedef struct	s_data {
 	void	*img;
@@ -30,13 +29,13 @@ typedef struct s_plan
 {
 	double plan_width;
 	double plan_start;
-}t_plan;
+} t_plan;
 
 typedef struct s_mo
 {
 	int x;
 	int y;
-}t_mo;
+} t_mo;
 
 typedef struct s_fractal
 {
@@ -48,7 +47,7 @@ typedef struct s_moves
 {
 	double x_move;
 	double y_move;
-}t_moves;
+} t_moves;
 
 typedef struct s_param
 {
@@ -56,6 +55,7 @@ typedef struct s_param
 	void *mlx;
 	int p;
 	double zoom_pers;
+	int iterations;
 	t_data img;
 	t_plan plan;
 	t_mo mouse;
@@ -64,25 +64,18 @@ typedef struct s_param
 } t_param;
 
 
-typedef struct s_mandelbrot
-{
-	double x;
-    double y;
-    double xo;
-    double yo;
-    double tmp;
-    int iteration;
-    t_complex z;
-} t_mandelbrot;
-
 void	ft_putchar_fd(char c, int fd);
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	ft_putstr_fd(char *s, int fd);
-int ft_strlen (char *str);
+int		ft_strlen (char *str);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int map_to_color(int iteration, int p);
-int events_handler(int keycode, t_param *param);
-void draw_mandelbrot(void *img, t_plan *plan, t_moves move, int p);
-int	mouse_event(int keycode, int x, int y, t_param *param);
+int 	map_to_color(int iteration);
+int 	events_handler(int keycode, t_param *param);
+void 	draw_mandelbrot(void *img, t_plan *plan, t_moves move, t_param param);
+int		mouse_event(int keycode, int x, int y, t_param *param);
 t_complex map_pixel(int i, int j, t_plan *plan, t_moves move);
-void draw_julia(void *img, t_plan *plan, t_moves move, t_complex c);
+void 	draw_julia(void *img, t_plan *plan, t_moves move, t_complex c);
+void 	draw_tricorn(void *img, t_plan *plan, t_moves move);
+long	ft_atoi(const char *str);
+double ft_atof (const char *str);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);

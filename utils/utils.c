@@ -1,5 +1,37 @@
 #include "../includes/fractol.h"
 
+static	int	is_space(char c)
+{
+	if (c == ' ' || c == '\t' || c == '\v'
+		|| c == '\n' || c == '\r' || c == '\f')
+		return (1);
+	return (0);
+}
+
+long	ft_atoi(const char *str)
+{
+	int					sign;
+	long long	result;
+	int					i;
+
+	sign = 1;
+	result = 0;
+	i = 0;
+	while (is_space(str[i]))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
+	{
+		result = (result * 10) + str[i] - '0';
+		i++;
+	}
+	return ((long)sign * result);
+}
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
@@ -8,47 +40,26 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int julia(t_complex c, t_complex z)
+double ft_atof (const char *str)
 {
-    int iter;
-    double temp;
+    double				exponent ;
+	double		fraction; 
+	char *c;
 
-	iter = 0;
-    while ((z.real * z.real + z.imag * z.imag) < 4 && iter < MAX_ITERATIONS) {
-        temp = z.real * z.real - z.imag * z.imag + c.real;
-        z.imag = 2 * z.real * z.imag + c.imag;
-        z.real = temp;
-        iter++;
-    }
-
-    return iter;
-}
-
-void draw_julia(void *img, t_plan *plan, t_moves move, t_complex c)
-{    
-	int i;
-	int j;
-	int iteration;
-	t_complex z;
-
-	// printf("julia\n");
-	i = 0;
-	while (i < WIDTH)
+	c = (char *)str;
+	exponent = (double)ft_atoi(c);
+	while (*c && *c != '.')
+		c++;
+	if(*c == '.')
+		c++;
+	fraction = (double)ft_atoi(c);
+	int len = ft_strlen(c);
+	while(len != 0)
 	{
-		j = 0;
-		while (j < HEIGHT)
-		{
-			z.imag = map_pixel(i, j, plan, move).imag;
-			z.real = map_pixel(i, j, plan, move).real;
-			
-			iteration = julia(c, z);
-
-			if (iteration == MAX_ITERATIONS)
-                my_mlx_pixel_put(img, i, j, 0X000000);
-            else 
-                my_mlx_pixel_put(img, i, j, map_to_color(iteration, 1));
-			j++;
-		}
-		i++;
+		fraction /= 10;
+		len--;
 	}
+	if (exponent >= 0 )
+		return (exponent + fraction);
+    return (exponent - fraction);
 }

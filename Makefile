@@ -1,6 +1,6 @@
-NAME = frac
+NAME = fractol
 CC = cc  -g  # -Werror -fsanitize=address -g3
-SRC = fractol.c ./utils/ft_putstr_fd.c ./utils/ft_putchar_fd.c ./utils/ft_strlen.c ./utils/ft_strncmp.c ./utils/utils.c ./utils/color.c ./utils/events.c
+SRC = fractol.c ./utils/ft_putstr_fd.c ./utils/ft_putchar_fd.c ./utils/ft_strlen.c ./utils/ft_strncmp.c ./utils/julia.c ./utils/color.c ./utils/events.c ./utils/tricorn.c ./utils/utils.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

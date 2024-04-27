@@ -3,12 +3,8 @@
 #define WIDTH 800
 #define HEIGHT 800
 #define PLANEWIDTH 3.0
-// #define PLANEHEIGHT PLANEWIDTH * (double) (HEIGHT) / (WIDTH)
 #define PLANESTART (double)PLANEWIDTH / 2
-// double bottom_right_c_real = 1.0;  
-// double bottom_right_c_imag = -2.0;
-// double top_left_c_real = -2.0;
-// double top_left_c_imag = 2.0;
+
 
 t_data img;
 
@@ -19,21 +15,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
-
-// t_complex map_pixel(int i, int j, int z, int x)
-// {
-//     t_complex c;
-//     static double PLANEWIDTH = 3.0;
-//     static double PLANESTART = PLANEWIDTH / 2;
-
-
-//     double whratio = (double)WIDTH / HEIGHT;
-//     // zoom line
-//     c.real = (((double)i / WIDTH) * (PLANEWIDTH / z) * whratio - (PLANESTART  / z) * whratio);
-//     // shift line
-//     c.imag = ((((double)j / HEIGHT)) * (PLANEWIDTH / z) - ((PLANESTART) / z));
-//     return (c);
-// }
 
 t_complex map_pixel(int i, int j, t_plan *plan, t_moves move)
 {
