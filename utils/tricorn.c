@@ -6,7 +6,7 @@ int calculate_tricorn(t_complex z)
     double temp;
 	t_complex c = z;
 	iter = 0;
-    while ((z.real * z.real + z.imag * z.imag) < 4 && iter < 50) {
+    while ((z.real * z.real + z.imag * z.imag) < 4 && iter < MAX_ITERATIONS) {
         temp = z.real * z.real - z.imag * z.imag + c.real;
         z.imag = -2 * z.real * z.imag + c.imag;
         z.real = temp;

@@ -42,11 +42,14 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 double ft_atof (const char *str)
 {
-    double				exponent ;
+    double				exponent;
 	double		fraction; 
 	char *c;
+	double s = 1;
 
 	c = (char *)str;
+	if (str[0] == '-' && str[1] == '0')
+		s = -1;
 	exponent = (double)ft_atoi(c);
 	while (*c && *c != '.')
 		c++;
@@ -60,6 +63,6 @@ double ft_atof (const char *str)
 		len--;
 	}
 	if (exponent >= 0 )
-		return (exponent + fraction);
-    return (exponent - fraction);
+		return ( s * (exponent + fraction));
+    return (s * (exponent - fraction));
 }

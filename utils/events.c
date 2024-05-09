@@ -11,13 +11,9 @@ int events_handler(int keycode, t_param *param)
     else if (keycode == 65364)
         param->move.y_move = param->move.y_move + (0.5 * param->zoom_pers);
     else if (keycode == 32)
-    {
         param->p++;
-    }
     else if (keycode == 65293)
-    {
         param->iterations += 50;
-    }
     else if (keycode == XK_Escape)
     {
         mlx_destroy_window(param->mlx,param->win);
@@ -25,7 +21,7 @@ int events_handler(int keycode, t_param *param)
         exit(0);
     }
     if (!ft_strncmp("julia", param->fractal.name, 5))
-        draw_julia(&param->img, &param->plan, param->move, (t_complex){-1.476,0});
+        draw_julia(&param->img, &param->plan, param->move, param->fractal.c);
     else if (!ft_strncmp("mandelbrot", param->fractal.name, 10))
         draw_mandelbrot(&param->img, &param->plan, param->move, *param);
     else
@@ -59,8 +55,8 @@ int	mouse_event(int keycode, int x, int y, t_param *param)
         param->move.y_move += old.imag - new.imag;
     }
     if (!ft_strncmp("julia", param->fractal.name, 5))
-        draw_julia(&param->img, &param->plan, param->move, (t_complex){-1.476,0});
-   else if (!ft_strncmp("mandelbrot", param->fractal.name, 10))
+        draw_julia(&param->img, &param->plan, param->move, param->fractal.c);
+    else if (!ft_strncmp("mandelbrot", param->fractal.name, 10))
         draw_mandelbrot(&param->img, &param->plan, param->move, *param);
     else
         draw_tricorn(&param->img, &param->plan, param->move);

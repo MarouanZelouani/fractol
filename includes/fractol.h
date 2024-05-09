@@ -79,3 +79,4 @@ void 	draw_tricorn(void *img, t_plan *plan, t_moves move);
 long	ft_atoi(const char *str);
 double ft_atof (const char *str);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	_error(int number);

@@ -7,12 +7,11 @@ int calculate_julia(t_complex c, t_complex z)
 
 	iter = 0;
     while ((z.real * z.real + z.imag * z.imag) < 4 && iter < MAX_ITERATIONS) {
-        temp = z.real * z.real - z.imag * z.imag + c.real;
-        z.imag = 2 * z.real * z.imag + c.imag;
-        z.real = temp;
+        temp = z.real * z.real - z.imag * z.imag;
+        z.imag = 2 * z.real * z.imag - c.imag;
+        z.real = temp + c.real;
         iter++;
     }
-
     return iter;
 }
 
