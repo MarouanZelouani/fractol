@@ -77,9 +77,9 @@ void draw_fractal(char **type)
     if (!ft_strncmp("mandelbrot", type[1], 10))
         draw_mandelbrot(&param.img, &param.plan, (t_moves){0,0}, param);
     else if (!ft_strncmp("julia", type[1], 5))
-        draw_julia(&param.img, &param.plan, (t_moves){0,0}, param.fractal.c);
+        draw_julia(&param.img, &param.plan, (t_moves){0,0}, param.fractal.c, param);
     else if (!ft_strncmp("tricorn", type[1], 7))
-        draw_tricorn(&param.img, &param.plan, (t_moves){0,0});
+        draw_tricorn(&param.img, &param.plan, (t_moves){0,0}, param);
     mlx_key_hook(param.win, events_handler, &param);
     mlx_mouse_hook(param.win, mouse_event, &param);
     mlx_put_image_to_window(param.mlx, param.win, param.img.img, 0, 0);

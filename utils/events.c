@@ -21,11 +21,11 @@ int events_handler(int keycode, t_param *param)
         exit(0);
     }
     if (!ft_strncmp("julia", param->fractal.name, 5))
-        draw_julia(&param->img, &param->plan, param->move, param->fractal.c);
+        draw_julia(&param->img, &param->plan, param->move, param->fractal.c, *param);
     else if (!ft_strncmp("mandelbrot", param->fractal.name, 10))
         draw_mandelbrot(&param->img, &param->plan, param->move, *param);
     else
-        draw_tricorn(&param->img, &param->plan, param->move);
+        draw_tricorn(&param->img, &param->plan, param->move, *param);
     mlx_put_image_to_window(param->mlx, param->win, param->img.img, 0, 0);
     return (0);
 }
@@ -55,11 +55,11 @@ int	mouse_event(int keycode, int x, int y, t_param *param)
         param->move.y_move += old.imag - new.imag;
     }
     if (!ft_strncmp("julia", param->fractal.name, 5))
-        draw_julia(&param->img, &param->plan, param->move, param->fractal.c);
+        draw_julia(&param->img, &param->plan, param->move, param->fractal.c, *param);
     else if (!ft_strncmp("mandelbrot", param->fractal.name, 10))
         draw_mandelbrot(&param->img, &param->plan, param->move, *param);
     else
-        draw_tricorn(&param->img, &param->plan, param->move);
+        draw_tricorn(&param->img, &param->plan, param->move, *param);
     mlx_put_image_to_window(param->mlx, param->win, param->img.img, 0, 0);
     return (0);
 }

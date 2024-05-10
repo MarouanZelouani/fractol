@@ -15,7 +15,7 @@ int calculate_tricorn(t_complex z)
     return iter;
 }
 
-void draw_tricorn(void *img, t_plan *plan, t_moves move)
+void draw_tricorn(void *img, t_plan *plan, t_moves move, t_param param)
 {    
 	int i;
 	int j;
@@ -36,7 +36,7 @@ void draw_tricorn(void *img, t_plan *plan, t_moves move)
 			if (iteration == 50)
                 my_mlx_pixel_put(img, i, j, 0X000000);
             else 
-                my_mlx_pixel_put(img, i, j, map_to_color(iteration, -100));
+                my_mlx_pixel_put(img, i, j, map_to_color(iteration, param.p));
 			j++;
 		}
 		i++;
