@@ -51,6 +51,8 @@ double ft_atof (const char *str)
 	if (str[0] == '-' && str[1] == '0')
 		s = -1;
 	exponent = (double)ft_atoi(c);
+	if (str[0] == '.')
+		exponent = 0.0;
 	while (*c && *c != '.')
 		c++;
 	if(*c == '.')
