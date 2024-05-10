@@ -80,3 +80,4 @@ long	ft_atoi(const char *str);
 double ft_atof (const char *str);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	_error(int number);
+int close_window(t_param *param);

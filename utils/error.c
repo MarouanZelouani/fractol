@@ -7,7 +7,7 @@ void _error(int number)
         ft_putstr_fd("Usage: ./fractol <name>\n", 1);
         ft_putstr_fd("Available Fractals:\n", 1);
         ft_putstr_fd("\t> mandelbrot\n", 1);
-        ft_putstr_fd("\t>  \n", 1);
+        ft_putstr_fd("\t> julia\n", 1);
         ft_putstr_fd("\t> tricorn\n", 1);
     }
     if (number == 2)

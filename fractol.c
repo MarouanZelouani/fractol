@@ -71,9 +71,9 @@ void draw_fractal(char **type)
     param.iterations = MAX_ITERATIONS;
     param.zoom_pers = 0.5;
     param.fractal.name = type[1];
+    param.p = 10;
     if (!ft_strncmp("julia", type[1], 5))
         param.fractal.c = (t_complex){ft_atof(type[2]), ft_atof(type[3])};
-    param.p = 1;
     if (!ft_strncmp("mandelbrot", type[1], 10))
         draw_mandelbrot(&param.img, &param.plan, (t_moves){0,0}, param);
     else if (!ft_strncmp("julia", type[1], 5))
@@ -81,6 +81,7 @@ void draw_fractal(char **type)
     else if (!ft_strncmp("tricorn", type[1], 7))
         draw_tricorn(&param.img, &param.plan, (t_moves){0,0}, param);
     mlx_key_hook(param.win, events_handler, &param);
+    mlx_hook(param.win, 17, 1L << 0, close_window, &param);
     mlx_mouse_hook(param.win, mouse_event, &param);
     mlx_put_image_to_window(param.mlx, param.win, param.img.img, 0, 0);
     mlx_loop(param.mlx);
