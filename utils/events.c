@@ -2,7 +2,6 @@
 
 int events_handler(int keycode, t_param *param)
 {
-    // printf("%d", keycode);
     if (keycode == 65363)
         param->move.x_move = param->move.x_move + (0.5 * param->zoom_pers);
     else if (keycode == 65361)
@@ -16,13 +15,7 @@ int events_handler(int keycode, t_param *param)
     else if (keycode == 65293)
         param->iterations += 50;
     else if (keycode == XK_Escape)
-    {
-        mlx_destroy_window(param->mlx,param->win);
-        mlx_destroy_image(param->mlx, param->img.img);
-        mlx_destroy_display(param->mlx);
-        free(param->mlx);
-        exit(EXIT_SUCCESS);
-    }
+        close_window(param);
     if (!ft_strncmp("julia", param->fractal.name, 5))
         draw_julia(&param->img, &param->plan, param->move, param->fractal.c, *param);
     else if (!ft_strncmp("mandelbrot", param->fractal.name, 10))
