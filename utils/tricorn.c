@@ -22,7 +22,6 @@ void draw_tricorn(void *img, t_plan *plan, t_moves move)
 	int iteration;
 	t_complex z;
 
-    // printf("tricon\n");
 	i = 0;
 	while (i < WIDTH)
 	{
@@ -37,7 +36,7 @@ void draw_tricorn(void *img, t_plan *plan, t_moves move)
 			if (iteration == 50)
                 my_mlx_pixel_put(img, i, j, 0X000000);
             else 
-                my_mlx_pixel_put(img, i, j, map_to_color(iteration));
+                my_mlx_pixel_put(img, i, j, map_to_color(iteration, -100));
 			j++;
 		}
 		i++;

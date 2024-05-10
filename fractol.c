@@ -50,7 +50,7 @@ void draw_mandelbrot(void *img, t_plan *plan, t_moves move, t_param param)
             if (iteration == param.iterations)
                 my_mlx_pixel_put(img, i, j, 0X000000);
             else 
-                my_mlx_pixel_put(img, i, j, map_to_color(iteration));
+                my_mlx_pixel_put(img, i, j, map_to_color(iteration, param.p));
             j++;
         }
         i++;
@@ -94,21 +94,21 @@ int main(int ac, char **av)
         && ft_strlen(av[1]) == 10)
     {
         if (ac > 2)
-            _error(2);
+            _error(1);
         draw_fractal(av);
     }
     else if (!ft_strncmp("tricorn", av[1], ft_strlen(av[1])) 
         && ft_strlen(av[1]) == 7)
     {
         if (ac > 2)
-            _error(4);
+            _error(1);
         draw_fractal(av);
     }
     else if (!ft_strncmp("julia", av[1], ft_strlen(av[1])) 
         && ft_strlen(av[1]) == 5)
     {
         if (ac < 4 || ac > 4 || !av[2][0] || !av[3][0])
-            _error(3);
+            _error(2);
         draw_fractal(av);
     }
     else

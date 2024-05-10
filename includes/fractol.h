@@ -69,7 +69,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	ft_putstr_fd(char *s, int fd);
 int		ft_strlen (char *str);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int 	map_to_color(int iteration);
+int 	map_to_color(int iteration, int color_shift);
 int 	events_handler(int keycode, t_param *param);
 void 	draw_mandelbrot(void *img, t_plan *plan, t_moves move, t_param param);
 int		mouse_event(int keycode, int x, int y, t_param *param);

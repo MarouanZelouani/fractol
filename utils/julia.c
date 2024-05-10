@@ -36,7 +36,7 @@ void draw_julia(void *img, t_plan *plan, t_moves move, t_complex c)
 			if (iteration == MAX_ITERATIONS)
                 my_mlx_pixel_put(img, i, j, 0X000000);
             else 
-                my_mlx_pixel_put(img, i, j, map_to_color(iteration));
+                my_mlx_pixel_put(img, i, j, map_to_color(iteration, 20));
 			j++;
 		}
 		i++;

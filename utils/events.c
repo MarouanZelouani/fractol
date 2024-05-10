@@ -11,7 +11,7 @@ int events_handler(int keycode, t_param *param)
     else if (keycode == 65364)
         param->move.y_move = param->move.y_move + (0.5 * param->zoom_pers);
     else if (keycode == 32)
-        param->p++;
+        param->p += 10;
     else if (keycode == 65293)
         param->iterations += 50;
     else if (keycode == XK_Escape)
