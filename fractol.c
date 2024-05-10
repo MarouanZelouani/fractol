@@ -71,7 +71,7 @@ void draw_fractal(char **type)
     param.iterations = MAX_ITERATIONS;
     param.zoom_pers = 0.5;
     param.fractal.name = type[1];
-    param.p = 10;
+    param.p = 70;
     if (!ft_strncmp("julia", type[1], 5))
         param.fractal.c = (t_complex){ft_atof(type[2]), ft_atof(type[3])};
     if (!ft_strncmp("mandelbrot", type[1], 10))

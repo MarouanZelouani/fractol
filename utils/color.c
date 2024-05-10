@@ -1,4 +1,5 @@
 #include "../includes/fractol.h"
+#include <math.h>
 
 // int map_to_color(int iteration, int color_shift)
 // {
@@ -16,7 +17,6 @@
 //     return (red << 16) | (green << 8) | blue;
 // }
 
-#include <math.h>
 
 int map_to_color(int iteration, int hue_shift)
 {
@@ -29,7 +29,6 @@ int map_to_color(int iteration, int hue_shift)
      
     double c = 1.0;
     double x = c * (1 - fabs(fmod(hue / 60.0, 2) - 1));
-    double m = 0.0;
 
     if (hue >= 0 && hue < 60) {
         red = c;
@@ -57,9 +56,9 @@ int map_to_color(int iteration, int hue_shift)
         blue = x;
     }
 
-    int r = (int)((red + m) * 255);
-    int g = (int)((green + m) * 255);
-    int b = (int)((blue + m) * 255);
+    int r = (int)(red * 255);
+    int g = (int)(green * 255);
+    int b = (int)(blue * 255);
 
     return (r << 16) | (g << 8) | b;
 }
