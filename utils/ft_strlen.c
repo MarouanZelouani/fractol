@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzelouan <mzelouan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/12 03:13:54 by mzelouan          #+#    #+#             */
+/*   Updated: 2024/05/12 03:43:49 by mzelouan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/fractol.h"
 
-int ft_strlen (char *str)
+int	ft_strlen(char *str)
 {
-    int len;
-    
-    len = 0;
-    while (str[len])
-        len++;
-    return (len);
+	int	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }

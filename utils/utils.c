@@ -1,18 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzelouan <mzelouan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/12 03:13:40 by mzelouan          #+#    #+#             */
+/*   Updated: 2024/05/12 03:22:23 by mzelouan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/fractol.h"
 
-static	int	is_space(char c)
+static int	is_space(char c)
 {
-	if (c == ' ' || c == '\t' || c == '\v'
-		|| c == '\n' || c == '\r' || c == '\f')
+	if (c == ' ' || c == '\t' || c == '\v' || c == '\n' || c == '\r'
+		|| c == '\f')
 		return (1);
 	return (0);
 }
 
 long	ft_atoi(const char *str)
 {
-	int					sign;
+	int			sign;
 	long long	result;
-	int					i;
+	int			i;
 
 	sign = 1;
 	result = 0;
@@ -32,21 +44,25 @@ long	ft_atoi(const char *str)
 	}
 	return ((long)sign * result);
 }
+
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	dst = data->addr + \
+	(y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }
 
-double ft_atof (const char *str)
+double	ft_atof(const char *str)
 {
-    double				exponent;
-	double		fraction; 
-	char *c;
-	double s = 1;
+	double	exponent;
+	double	fraction;
+	char	*c;
+	double	s;
+	int		len;
 
+	s = 1;
 	c = (char *)str;
 	if (str[0] == '-' && str[1] == '0')
 		s = -1;
@@ -55,16 +71,13 @@ double ft_atof (const char *str)
 		exponent = 0.0;
 	while (*c && *c != '.')
 		c++;
-	if(*c == '.')
+	if (*c == '.')
 		c++;
 	fraction = (double)ft_atoi(c);
-	int len = ft_strlen(c);
-	while(len != 0)
-	{
+	len = ft_strlen(c) + 1;
+	while (--len != 0)
 		fraction /= 10;
-		len--;
-	}
-	if (exponent >= 0 )
-		return ( s * (exponent + fraction));
-    return (s * (exponent - fraction));
+	if (exponent >= 0)
+		return (s * (exponent + fraction));
+	return (s * (exponent - fraction));
 }
